@@ -1,3 +1,14 @@
+// Global config
+var config = {
+  enabled: true
+};
+
+// Page structure definitions
+var structureDefs = {
+  header: [ 'header', '.header', 'div[role="banner"]' ],
+  nav: [ 'nav', '.nav', 'div[role="navigation"]' ],
+  footer: [ 'footer', '.footer', 'div[role="contentinfo"]' ]
+}
 
 $('body').ready( function () {
   //$('body').prepend('<p id="screen-reader-summary">This is placeholder screen-reader text which will be used to display the summary of the page.</p>');
@@ -33,8 +44,13 @@ $('body').ready( function () {
 
   // Select a header
   header.before( '<div id="header-show" style="width: 100%; padding: 20px; text-align: center; background-color: #6ab7ff"><button id="header-show-btn" style="padding: 20px; background-color: #1e88e5; color: #fff; font-size: 0.875rem; font-weight: 700; display: inline-block; min-width: 200px; text-transform: uppercase; border-radius: 9999em; font-family: Helvetica, Arial, sans-serif; text-align: center; vertical-align: middle; border: 0 none; outline: none;">Display header</button></div>' );
-  $('header').hide();
-  $('div[role="banner"]').hide();
 
   $('#header-show-btn').click(showHeaders);
 });
+
+// Get the config
+function getConfig() {
+  chrome.storage.sync.get('t8-config', function(obj) {
+    config = obj;
+  }.bind(this));
+}
