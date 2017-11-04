@@ -4,6 +4,8 @@
     "dependencies": {
         "aylien_textapi": "^0.6.0",
         "browserify": "^14.5.0",
-        "jquery": "^3.2.1"
+        "jquery": "^3.2.1",
+        "jquery.hotkeys": "git+https://github.com/jeresig/jquery.hotkeys.git",
+        "sum": "^0.1.4"
     }
 }
