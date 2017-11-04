@@ -1,0 +1,27 @@
+{
+  "manifest_version": 1,
+  "homepage_url": "https://github.com/glasgow2017/team-8",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/index.js"]
+    }
+  ],
+  "background": {
+    "persistent": true,
+    "scripts": ["background/index.js"]
+  },
+  "page_action": {
+    "default_title": "Webpack chrome extension popup action",
+    "default_popup": "popup/index.html"
+  },
+  "permissions": [
+    "background",
+    "tabs"
+  ],
+  "icons": {
+    "16": "icons/team8-16.png",
+    "32": "icons/team8-32.png",
+    "128": "icons/team8-128.png"
+  }
+}
