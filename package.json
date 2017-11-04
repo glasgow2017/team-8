@@ -2,6 +2,8 @@
     "name": "cdg-glasgow-2017-team-8",
     "version": "1.0.0",
     "dependencies": {
-        "jquery": "^3.2.1"
+        "jquery": "^3.2.1",
+        "unfluff": "^1.1.0",
+        "unfluff-without-node": "^1.1.3"
     }
 }
