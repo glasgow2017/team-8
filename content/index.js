@@ -10,6 +10,32 @@ var structureDefs = {
   footer: [ 'footer', '.footer', 'div[role="contentinfo"]' ]
 }
 
+// Get the config
+function getConfig() {
+  chrome.storage.sync.get('t8-config', function(obj) {
+    config = obj;
+  }.bind(this));
+}
+
+// Remove empty elements from array
+Array.prototype.removeAllEmpty = function() {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == undefined) {
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+}
+
+// Get page elements from selectors
+Array.prototype.toJQueryEntities = function() {
+  return this.map(function (x) {
+    var c = $(x);
+    c.removeAllEmpty(); // Remove empty
+  });
+}
+
 $('body').ready( function () {
   //$('body').prepend('<p id="screen-reader-summary">This is placeholder screen-reader text which will be used to display the summary of the page.</p>');
 
@@ -27,19 +53,6 @@ $('body').ready( function () {
     }
   }
 
-  function hideHeaders() {
-    for (var i = 0; i < headerSelectors.length; i++) {
-      $(headerSelectors[i]).hide();
-    }
-  }
-
-  function showHeaders() {
-    for (var i = 0; i < headerSelectors.length; i++) {
-      $(headerSelectors[i]).show();
-    }
-    $('header-show').hide();
-  }
-
   hideHeaders();
 
   // Select a header
@@ -47,10 +60,3 @@ $('body').ready( function () {
 
   $('#header-show-btn').click(showHeaders);
 });
-
-// Get the config
-function getConfig() {
-  chrome.storage.sync.get('t8-config', function(obj) {
-    config = obj;
-  }.bind(this));
-}
