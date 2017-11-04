@@ -2,7 +2,20 @@
 extractor = require('unfluff-without-node');
 
 data = extractor.lazy($("html").html());
+console.log(data.title());
+console.log(data.softTitle());
+console.log(data.date());
+console.log(data.copyright());
+console.log(data.author());
+console.log(data.publisher());
 console.log(data.text());
+console.log(data.image());
+console.log(data.tags());
+console.log(data.videos());
+console.log(data.canonicalLink());
+console.log(data.lang());
+console.log(data.description());
+console.log(data.favicon());
   
 },{"unfluff-without-node":78}],2:[function(require,module,exports){
 "use strict";
@@ -2560,8 +2573,8 @@ var update = exports.update = function(arr, parent) {
 
 // module.exports = $.extend(exports);
 
-}).call(this,{"isBuffer":require("../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":87,"./utils":19,"htmlparser2":50}],18:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":87,"./utils":19,"htmlparser2":50}],18:[function(require,module,exports){
 /**
  * Module dependencies
  */
@@ -2957,8 +2970,8 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 
-}).call(this,{"isBuffer":require("../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":87}],22:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":87}],22:[function(require,module,exports){
 /*
   Module dependencies
 */
