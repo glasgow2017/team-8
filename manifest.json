@@ -6,7 +6,13 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["node_modules/jquery/dist/jquery.min.js", "content/index.js"],
+      "js": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "content/add_top_banner.js",
+        "content/extract_important_sentence.js",
+        "content/index.js",
+        "content/parser.js"
+      ],
       "run_at": "document_start"
     }
   ],

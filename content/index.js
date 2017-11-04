@@ -120,5 +120,4 @@ $('body').ready( function () {
     if (structure.footer.length > 0)
       addNavigationItem('Jump to Footer', addAnchorToElement(structure.footer[0]));
   }
-
- });
+});
