@@ -16,7 +16,7 @@ var structureDefs = {
 // Get the config
 function getConfig() {
   chrome.storage.sync.get('t8-config', function(obj) {
-    config = obj;
+    config = obj['t8-config'];
   }.bind(this));
 }
 
@@ -52,7 +52,7 @@ $('body').ready( function () {
 
   // Add header section
   // $('body').prepend( '<div id="' + elPrefix + 'header" style="width: 100%; padding: 20px; text-align: center; background-color: #6ab7ff; color: #fff; position: fixed; z-index: 100000;"></div>' );
-  // 
+  //
   // var cfgHeader = getPluginEl('header');
   //
   //
