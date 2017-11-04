@@ -9,18 +9,6 @@
     <input id="enabled-checkbox" type="checkbox"></input>
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script>
-      var config;
-
-      chrome.storage.sync.get('t8-config', function(obj) {
-        config = obj['t8-config'] || { enabled: false };
-        $('#enabled-checkbox').val(config.enabled);
-      }.bind(this));
-
-      $('#enabled-checkbox').click(function() {
-          config.enabled = $(this).is(':checked');
-          chrome.storage.sync.set({ 't8-config': config });
-      }.bind(this));
-    </script>
+    <script src="popup.js"></script>
   </body>
 </html>
