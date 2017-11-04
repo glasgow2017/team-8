@@ -107,9 +107,9 @@ $('body').ready( function () {
     $('body').prepend( styles + '<div id="' + elPrefix + 'header" tabindex="1"></div>' );
 
     var cfgHeader = getPluginEl('header');
-    cfgHeader.append( '<h3 style="font-size: 20px;' + styles.font + '">' + strings.en.widget_title + '</h3> ' );
-    cfgHeader.append( '<h4 style="font-size: 16px;' + styles.font + '">' + strings.en.summary + '</h4><p style="' + styles.font + '" id="' + elPrefix + 'summary"></p>' );
-    cfgHeader.append( '<h4 style="font-size: 16px;' + styles.font + '">' + strings.en.structure + '</h4><ul style="' + styles.font + '" id="' + elPrefix + 'nav"></ul>' );
+    cfgHeader.append( '<h3>' + strings.en.widget_title + '</h3> ' );
+    cfgHeader.append( '<h4>' + strings.en.summary + '</h4><p id="' + elPrefix + 'summary"></p>' );
+    cfgHeader.append( '<h4>' + strings.en.structure + '</h4><ul id="' + elPrefix + 'nav"></ul>' );
 
     if (structure.header.length > 0)
       addNavigationItem('Jump to Header', addAnchorToElement(structure.header[0]));
