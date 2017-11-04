@@ -11,7 +11,7 @@
         "content/add_top_banner.js",
         "content/extract_important_sentence.js",
         "content/index.js",
-        "content/parse.js"
+        "content/parser.js"
       ],
       "run_at": "document_start"
     }
