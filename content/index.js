@@ -13,6 +13,29 @@ var structureDefs = {
   footer: [ 'footer', '.footer', 'div[role="contentinfo"]' ]
 }
 
+// i18n support ;)
+var strings = {
+  en: {
+    widget_title: 'Quick access',
+    summary: 'Summary',
+    structure: 'Page structure',
+  }
+}
+
+var styles =
+`<style>
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color:
+</style>`;
+
+var styles = {
+  fontFamily: 'font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Helvetica, Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\';',
+  textColor: 'color=#fff;',
+  fontWeight: 'font-weight: 100;',
+}
+styles.font = styles.fontFamily + styles.textColor + styles.fontWeight;
+
 // Get the config
 function getConfig() {
   chrome.storage.sync.get('t8-config', function(obj) {
@@ -42,21 +65,30 @@ Array.prototype.toJQueryEntities = function() {
   }).removeAllEmpty();
 }
 
+function setSummary(text) {
+  getPluginEl('summary').text(text);
+}
+
+function addNavigationItem(title, anchor) {
+  getPluginEl('nav').append( '<a href="#' + anchor + '"><li>' + title + '</li></a>' );
+}
+
 $('body').ready( function () {
-  // Populate structure
-  var structure = {
-    header: structureDefs.header.toJQueryEntities(),
-    nav: structureDefs.header.toJQueryEntities(),
-    footer: structureDefs.header.toJQueryEntities(),
+  if (config.enabled) {
+    // Populate structure
+    var structure = {
+      header: structureDefs.header.toJQueryEntities(),
+      nav: structureDefs.header.toJQueryEntities(),
+      footer: structureDefs.header.toJQueryEntities(),
+    }
+
+    // Add header section
+    $('body').prepend( '<div id="' + elPrefix + 'header" style="width: 300px; padding: 20px; text-align: center; background-color: #3949ab; color: #fff; position: fixed; z-index: 100000; left: 10px; top: 70px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);" tabindex="1"></div>' );
+
+    var cfgHeader = getPluginEl('header');
+    cfgHeader.append( '<h3 style="font-size: 20px;' + styles.font + '">' + strings.en.widget_title + '</h3> ' );
+    cfgHeader.append( '<h4 style="font-size: 16px;' + styles.font + '">' + strings.en.summary + '</h4><p style="' + styles.font + '" id="' + elPrefix + 'summary"></p>' );
+    cfgHeader.append( '<h4 style="font-size: 16px;' + styles.font + '">' + strings.en.structure + '</h4><ul style="' + styles.font + '" id="' + elPrefix + 'nav"></ul>' );
   }
 
-  // Add header section
-  // $('body').prepend( '<div id="' + elPrefix + 'header" style="width: 100%; padding: 20px; text-align: center; background-color: #6ab7ff; color: #fff; position: fixed; z-index: 100000;"></div>' );
-  //
-  // var cfgHeader = getPluginEl('header');
-  //
-  //
-  //
-  // cfgHeader.append( '<h1>Code For Good</h1> ' )
-
-});
+ });
