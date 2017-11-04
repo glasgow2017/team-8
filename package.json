@@ -1,0 +1,7 @@
+{
+    "name": "cdg-glasgow-2017-team-8",
+    "version": "1.0.0",
+    "dependencies": {
+        "jquery": "^3.2.1"
+    }
+}
