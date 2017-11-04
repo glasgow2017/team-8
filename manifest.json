@@ -6,7 +6,10 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["node_modules/jquery/dist/jquery.min.js", "content/index.js"],
+      "js": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/jquery.hotkeys/jquery.hotkeys.js",
+        "content/index.js"],
       "run_at": "document_start"
     }
   ],
