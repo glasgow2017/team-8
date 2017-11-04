@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "dependencies": {
         "jquery": "^3.2.1",
-        "jquery.hotkeys": "git+https://github.com/jeresig/jquery.hotkeys.git"
+        "jquery.hotkeys": "git+https://github.com/jeresig/jquery.hotkeys.git",
+        "sum": "^0.1.4"
     }
 }
