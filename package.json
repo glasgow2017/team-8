@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/glasgow2017/team-8#readme",
   "devDependencies": {
-    "webpack": "^3.8.1"
+    "browserify": "^14.5.0"
   },
   "dependencies": {
     "node-summary": "^1.2.0"
