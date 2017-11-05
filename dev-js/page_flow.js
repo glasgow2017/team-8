@@ -51,10 +51,22 @@ $('body').ready(function() {
     const strPageText = extractTextFromPage($('body')).substring(0, 2000);
     const strPageImage = extractImageFromPage($('body'));
 
-    assert(strPageText != null, "Page extraction returned NULL");
-    assert(strPageImage != null, "Image extraction returned NULL");
+    console.assert(strPageText != null, "Page extraction returned NULL");
+    console.assert(strPageImage != null, "Image extraction returned NULL");
 
-    var sentences = escape(getSummary(strPageText, 'Page text', 4));
+    
+
+
+
+
+
+
+
+
+
+
+
+    var sentences =  getSummary(strPageText, 'Page text', 4);
 
     //console.log(sentences);
 
