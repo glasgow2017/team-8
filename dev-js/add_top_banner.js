@@ -130,7 +130,8 @@ const displayTopBanner = function fDisplayTopBanner() {
 
       // Add header section
       $('body').prepend(`${styles}<div id="${elPrefix}header" tabindex="1"></div>`);
-
+      $('#' + elPrefix + 'header').prepend('<div id="t8-cfg_summary"></div>');
+      
       $sections = getPageSections();
       $('#' + elPrefix + 'header').prepend('<ul id="geniessen-quick-access"></ul>');
       if (null !== $sections[0]) {
