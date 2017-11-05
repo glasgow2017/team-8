@@ -36,7 +36,6 @@ const displayTopBanner = function fDisplayTopBanner() {
       top: 70px;
       border-radius: 5px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-      opacity: 0.2; /* TMP */
     }
   
     #t8-cfg_header h3 {
@@ -51,6 +50,14 @@ const displayTopBanner = function fDisplayTopBanner() {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
       color=#fff;
       font-weight: 100;
+    }
+
+    .geniessen-anchor {
+      overflow: hidden;
+      height: 0;
+      width: 0;
+      display: inline-block;
+      position: relative;
     }
   </style>`;
 
@@ -101,16 +108,32 @@ const displayTopBanner = function fDisplayTopBanner() {
       // Add header section
       $('body').prepend(`${styles}<div id="${elPrefix}header" tabindex="1"></div>`);
 
-      const cfgHeader = getPluginEl('header');
-      cfgHeader.append(`<h3>${strings.en.widget_title}</h3> `);
-      cfgHeader.append(`<h4>${strings.en.summary}</h4><p id="${elPrefix}summary"></p>`);
-      cfgHeader.append(`<h4>${strings.en.structure}</h4><ul id="${elPrefix}nav"></ul>`);
-
-      if (structure.header.length > 0) { addNavigationItem('Jump to Header', addAnchorToElement(structure.header[0])); }
-
-      if (structure.nav.length > 0) { addNavigationItem('Jump to Navigation', addAnchorToElement(structure.nav[0])); }
-
-      if (structure.footer.length > 0) { addNavigationItem('Jump to Footer', addAnchorToElement(structure.footer[0])); }
+      $sections = getPageSections();
+      $('#' + elPrefix + 'header').prepend('<ul id="geniessen-quick-access"></ul>');
+      if (null !== $sections[0]) {
+        if (undefined === $sections[0].attr('id')) {
+          $sections[0].attr('id', 'geniessen-header');          
+        }     
+        $('#geniessen-quick-access').append('<li><a href="#' + $sections[0].attr('id') + '">Header</a></li>');
+      }
+      if (null !== $sections[1]) {
+        if (undefined === $sections[1].attr('id')) {
+          $sections[1].attr('id', 'geniessen-navbar');          
+        }        
+        $('#geniessen-quick-access').append('<li><a href="#' + $sections[1].attr('id') + '">Navigation Bar</a></li>');
+      }
+      if (null !== $sections[2]) {
+        if (undefined === $sections[2].attr('id')) {
+          $sections[2].attr('id', 'geniessen-main-content');          
+        }         
+        $('#geniessen-quick-access').append('<li><a href="#' + $sections[2].attr('id') + '">Main Content</a></li>');
+      }
+      if (null !== $sections[3]) {
+        if (undefined === $sections[3].attr('id')) {
+          $sections[3].attr('id', 'geniessen-footer');          
+        }
+        $('#geniessen-quick-access').append('<li><a href="#' + $sections[3].attr('id') + '">Footer</a></li>');
+      }
     }
   });
 };
