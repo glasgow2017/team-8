@@ -54,7 +54,19 @@ $('body').ready(function() {
     Console.assert(strPageText != null, "Page extraction returned NULL");
     Console.assert(strPageImage != null, "Image extraction returned NULL");
 
-    var sentences = escape(getSummary(strPageText, 'Page text', 4));
+    
+
+
+
+
+
+
+
+
+
+
+
+    var sentences =  getSummary(strPageText, 'Page text', 4);
 
     //console.log(sentences);
 
