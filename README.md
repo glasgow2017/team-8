@@ -1,6 +1,6 @@
 Code for Good hackaton by JP Morgan
 
-Solution to make web pages more accessible for people with visual disablities. 
+Solution to make web pages more accessible for people with visual disablities. This currently only works with chrome. 
 
 Key aspects:
 
@@ -28,3 +28,4 @@ After every pull or clone, run:
 # TODO
  - Extend the soluctions to work with Safari and Firefox
  - apply ESLint
+ - Test on Windows & on more websites
