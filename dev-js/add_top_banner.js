@@ -1,29 +1,29 @@
 const displayTopBanner = function fDisplayTopBanner() {
   // Global config
-  var config = {
-    enabled: true
+  const config = {
+    enabled: true,
   };
-  
+
   // Prefix of generated elements
-  var elPrefix = 't8-cfg_';
-  
+  const elPrefix = 't8-cfg_';
+
   // Page structure definitions
-  var structureDefs = {
-    header: [ 'header', '.header', 'div[role="banner"]' ],
-    nav: [ 'nav', '.nav', 'div[role="navigation"]' ],
-    footer: [ 'footer', '.footer', 'div[role="contentinfo"]' ]
-  }
-  
+  const structureDefs = {
+    header: ['header', '.header', 'div[role="banner"]'],
+    nav: ['nav', '.nav', 'div[role="navigation"]'],
+    footer: ['footer', '.footer', 'div[role="contentinfo"]'],
+  };
+
   // i18n support ;)
-  var strings = {
+  const strings = {
     en: {
       widget_title: 'Quick access',
       summary: 'Summary',
       structure: 'Page structure',
-    }
-  }
-  
-  var styles =`<style>
+    },
+  };
+
+  const styles = `<style>
     #t8-cfg_header {
       width: 300px;
       padding: 20px;
@@ -53,74 +53,64 @@ const displayTopBanner = function fDisplayTopBanner() {
       font-weight: 100;
     }
   </style>`;
-  
-  // Get the config
-  function getConfig() {
-    chrome.storage.sync.get('t8-config', function(obj) {
-      config = obj['t8-config'];
-    }.bind(this));
-  }
-  
+
   function getPluginEl(name) {
-    return $("#" + elPrefix + name);
+    return $(`#${elPrefix}${name}`);
   }
-  
+
   // Remove empty elements from array
-  Array.prototype.removeAllEmpty = function() {
-    for (var i = 0; i < this.length; i++) {
+  Array.prototype.removeAllEmpty = function () {
+    for (let i = 0; i < this.length; i++) {
       if (this[i] == undefined) {
         this.splice(i, 1);
         i--;
       }
     }
     return this;
-  }
-  
+  };
+
   // Get page elements from selectors
-  Array.prototype.toJQueryEntities = function() {
-    return this.map(function (x) {
-      var c = $(x);
+  Array.prototype.toJQueryEntities = function () {
+    return this.map((x) => {
+      const c = $(x);
     }).removeAllEmpty();
-  }
-  
+  };
+
   function setSummary(text) {
     getPluginEl('summary').text(text);
   }
-  
+
   function addNavigationItem(title, anchor) {
-    getPluginEl('nav').append( '<a href="#' + anchor + '"><li>' + title + '</li></a>' );
+    getPluginEl('nav').append(`<a href="#${anchor}"><li>${title}</li></a>`);
   }
-  
+
   function addAnchorToElement(name, el) {
-    el.before( '<a name="' + elPrefix + name + '" />' );
+    el.before(`<a name="${elPrefix}${name}" />`);
     return elPrefix + name;
   }
-  
-  $('body').ready( function () {
+
+  $('body').ready(() => {
     if (config.enabled) {
       // Populate structure
-      var structure = {
+      const structure = {
         header: structureDefs.header.toJQueryEntities(),
         nav: structureDefs.header.toJQueryEntities(),
         footer: structureDefs.header.toJQueryEntities(),
-      }
-  
+      };
+
       // Add header section
-      $('body').prepend( styles + '<div id="' + elPrefix + 'header" tabindex="1"></div>' );
-  
-      var cfgHeader = getPluginEl('header');
-      cfgHeader.append( '<h3>' + strings.en.widget_title + '</h3> ' );
-      cfgHeader.append( '<h4>' + strings.en.summary + '</h4><p id="' + elPrefix + 'summary"></p>' );
-      cfgHeader.append( '<h4>' + strings.en.structure + '</h4><ul id="' + elPrefix + 'nav"></ul>' );
-  
-      if (structure.header.length > 0)
-        addNavigationItem('Jump to Header', addAnchorToElement(structure.header[0]));
-  
-      if (structure.nav.length > 0)
-        addNavigationItem('Jump to Navigation', addAnchorToElement(structure.nav[0]));
-  
-      if (structure.footer.length > 0)
-        addNavigationItem('Jump to Footer', addAnchorToElement(structure.footer[0]));
+      $('body').prepend(`${styles}<div id="${elPrefix}header" tabindex="1"></div>`);
+
+      const cfgHeader = getPluginEl('header');
+      cfgHeader.append(`<h3>${strings.en.widget_title}</h3> `);
+      cfgHeader.append(`<h4>${strings.en.summary}</h4><p id="${elPrefix}summary"></p>`);
+      cfgHeader.append(`<h4>${strings.en.structure}</h4><ul id="${elPrefix}nav"></ul>`);
+
+      if (structure.header.length > 0) { addNavigationItem('Jump to Header', addAnchorToElement(structure.header[0])); }
+
+      if (structure.nav.length > 0) { addNavigationItem('Jump to Navigation', addAnchorToElement(structure.nav[0])); }
+
+      if (structure.footer.length > 0) { addNavigationItem('Jump to Footer', addAnchorToElement(structure.footer[0])); }
     }
   });
-}
+};
