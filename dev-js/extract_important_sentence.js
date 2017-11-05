@@ -31,11 +31,11 @@ var abstract = sum({
 });
 
 //`abstract` is an object with format {'sentences':Array<String>, 'summary':String} where summary is just the concatenation of the sentences, for convenience.
-console.log("The short version of corpus is: ", abstract.summary);
+// console.log("The short version of corpus is: ", abstract.summary);
 
-$('body').ready(function () {
-  console.log($('body').text());
-});
+// $('body').ready(function () {
+//   console.log($('body').text());
+// });
 },{"sum":3}],2:[function(require,module,exports){
 // Porter stemmer in Javascript. Few comments, but it's easy to follow against
 // the rules in the original paper, in
