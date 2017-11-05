@@ -1,1 +1,1 @@
-cat build.bat | bash
+browserify dev-node/parser.node.js -o dev-js/parser.js && grunt && rm "dev-js/parser.js"
