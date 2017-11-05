@@ -4,13 +4,7 @@ const baseTabIndex = 9001; // ITS OVER 9000!
 let conversation; // active conversation
 let nMessageIndex = 0;
 
-function addMessage(message) {
-  message = $(message);
-  message.before(`<input type="text" readonly style="height: 0; width: 0;" tabindex="${baseTabIndex}${nMessageIndex}" aria-label="${message.text()}" />`);
-  nMessageIndex++;
-}
-
-$('body').ready(() => {
+$('body').ready( function() {
   // www.intercom.com
   setTimeout(() => {
     if ($('iframe[name=intercom-messenger-frame]') != undefined) {
@@ -19,25 +13,38 @@ $('body').ready(() => {
       // Get the conversation
       $('div[data-reactroot]').bind('DOMSubtreeModified', () => {
         // Check if iFrame is open
-        const content = $('iframe[name=intercom-messenger-frame]').contents();
-        setTimeout(() => {
-          $('.intercom-conversation-summary', content).click();
-          setTimeout(() => {
+        var content = $('iframe[name=intercom-messenger-frame]').contents();
+        setTimeout(function() { $('.intercom-conversation-summary', content).click();
+          setTimeout(function() {
+            var textarea = $('textarea[placeholder^="Write a reply');
+            textarea.attr('aria-label', 'Write a live chat message');
+            textarea.focus();
+
             // All messages
             const msgs = $('.intercom-conversation-part', content);
             // Init conversation if it doesn't exist
             if (nMessageIndex == 0) {
               nMessageIndex = msgs.length;
-
-              for (let i = 0; i < msgs.length; i++) {
-                const itm = $(msgs[i]);
-                itm.before(`<input type="text" readonly style="height: 0; width: 0;" tabindex="${baseTabIndex}${i}" aria-label="${itm.text()}" />`);
+              for (var i = 0; i < msgs.length; i++) {
+                var itm = $(msgs[i]);
+                var aria = '';
+                if (itm.hasClass('intercom-conversation-part-user')) {
+                  aria = 'You said ' + itm.find('.intercom-comment').text() + ' at ' + $('.intercom-conversation-part-metadata-save-state', itm).text().replace('h', ' hours');
+                } else {
+                  aria = 'Live chat response: ' + itm.text() + '.';
+                }
+                itm.before( '<input type="text" id="cfg-t8_' + i + '" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + i + '" aria-label="' + aria + '" />' );
               }
+              setInterval(function() { checkForUpdates(msg); }.bind(this), 3000);
               return;
             }
             if (nMessageIndex <= msgs.length) return;
             while (nMessageIndex < msgs.length) {
-              addMessage(msgs[nMessageIndex + 1]).bind(this);
+              var message = $(msgs[nMessageIndex + 1])
+              message.before( '<input type="text" id="cfg-t8_' + nMessageIndex + '" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + nMessageIndex + '" aria-label="' + message.text() + '" />' );
+              nMessageIndex++;
+              addMessage().bind(this);
+              $('cfg-t8_' + (nMessageIndex-1), content).focus();
             }
           }, 1000);
         }, 2000);
