@@ -14,16 +14,11 @@
       "run_at": "document_start"
     }
   ],
-  "background": {
-    "persistent": true,
-    "scripts": ["background/index.js"]
-  },
   "browser_action": {
     "default_icon": "icons/team8-32.png",
     "default_popup": "popup/index.html"
   },
   "permissions": [
-    "background",
     "tabs",
     "storage"
   ],
