@@ -16,7 +16,5 @@ After every pull or clone, run:
  - build.bat
 
 # TODO
- - Improve navigation using anchors
  - Extend the soluctions to work with Safari and Firefox
- - apply AirBnb's JavaScript coding style
- - if API doesn't return anything, revert back to extract_important_sentence.js
+ - apply ESLint
