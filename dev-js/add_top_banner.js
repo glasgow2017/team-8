@@ -36,6 +36,7 @@ const displayTopBanner = function fDisplayTopBanner() {
       top: 70px;
       border-radius: 5px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      opacity: 0.2; /* TMP */
     }
   
     #t8-cfg_header h3 {
