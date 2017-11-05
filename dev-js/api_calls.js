@@ -1,4 +1,4 @@
-function getSummary(text_body, text_title, sentence_amount) {
+const getSummary = function fGetSummary(text_body, text_title, sentence_amount) {
 
     return $.ajax({
         async: false,
