@@ -22,15 +22,24 @@ $('body').ready( function() {
         var content = $('iframe[name=intercom-messenger-frame]').contents();
         setTimeout(function() { $('.intercom-conversation-summary', content).click();
           setTimeout(function() {
+            var textarea = $('textarea[placeholder^="Write a reply');
+            textarea.attr('aria-label', 'Write a live chat message');
+            textarea.focus();
+
             // All messages
             var msgs = $('.intercom-conversation-part', content);
             // Init conversation if it doesn't exist
             if (nMessageIndex == 0) {
               nMessageIndex = msgs.length;
-
               for (var i = 0; i < msgs.length; i++) {
                 var itm = $(msgs[i]);
-                itm.before( '<input type="text" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + i + '" aria-label="' + itm.text() + '" />' );
+                var aria = '';
+                if (itm.hasClass('intercom-conversation-part-user')) {
+                  aria = 'You said ' + itm.find('.intercom-comment').text() + ' at ' + $('.intercom-conversation-part-metadata-save-state', itm).text().replace('h', ' hours');
+                } else {
+                  aria = 'Live chat response: ' + itm.text() + '.';
+                }
+                itm.before( '<input type="text" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + i + '" aria-label="' + aria + '" />' );
               }
               return;
             }
