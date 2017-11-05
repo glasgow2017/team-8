@@ -1,1 +1,2 @@
+extractTextFromPage();
 displayTopBanner();
