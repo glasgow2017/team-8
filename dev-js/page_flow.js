@@ -40,7 +40,7 @@ $('body').ready(function() {
     const strPageText = extractTextFromPage($('body')).substring(0, 2000);
     const strPageImage = extractImageFromPage($('body'));
 
-    const sentences = getSummary(strPageText, 'Page text', 4); // TMP
+    const sentences = getSummary(strPageText, 'Page text', 4);
     console.log(sentences);
 
     $(document).ready(function() {
