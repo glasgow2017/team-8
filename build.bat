@@ -1,1 +1,1 @@
-browserify dev-node/parser.node.js -o dev-js/parser.js && grunt
+browserify dev-node/parser.node.js -o dev-js/parser.js && grunt && del "dev-js\parser.js"
