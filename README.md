@@ -26,3 +26,4 @@ After every pull or clone, run:
 # TODO
  - Extend the soluctions to work with Safari and Firefox
  - apply ESLint
+ - Test on Windows & on more websites
