@@ -60,3 +60,5 @@ typings/
 .env
 
 .DS_Store
+
+/content/script.min.js
