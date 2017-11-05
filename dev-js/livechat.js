@@ -1,17 +1,17 @@
 // Adding accessibility to livechat
 
-var baseTabIndex = 9001; // ITS OVER 9000!
-var conversation; // active conversation
-var nMessageIndex = 0;
+const baseTabIndex = 9001; // ITS OVER 9000!
+let conversation; // active conversation
+let nMessageIndex = 0;
 
 $('body').ready( function() {
   // www.intercom.com
-  setTimeout(function() {
+  setTimeout(() => {
     if ($('iframe[name=intercom-messenger-frame]') != undefined) {
       // Supports live chat! Lets make this accessible!
 
       // Get the conversation
-      $('div[data-reactroot]').bind("DOMSubtreeModified", function() {
+      $('div[data-reactroot]').bind('DOMSubtreeModified', () => {
         // Check if iFrame is open
         var content = $('iframe[name=intercom-messenger-frame]').contents();
         setTimeout(function() { $('.intercom-conversation-summary', content).click();
@@ -21,7 +21,7 @@ $('body').ready( function() {
             textarea.focus();
 
             // All messages
-            var msgs = $('.intercom-conversation-part', content);
+            const msgs = $('.intercom-conversation-part', content);
             // Init conversation if it doesn't exist
             if (nMessageIndex == 0) {
               nMessageIndex = msgs.length;
@@ -46,9 +46,9 @@ $('body').ready( function() {
               addMessage().bind(this);
               $('cfg-t8_' + (nMessageIndex-1), content).focus();
             }
-          }.bind(this), 1000);
-        }.bind(this), 2000);
-      }.bind(this));
+          }, 1000);
+        }, 2000);
+      });
     }
-  }.bind(this), 1000);
-}.bind(this));
+  }, 1000);
+});
