@@ -7,7 +7,8 @@ module.exports = function(grunt) {
             'dev-js/extract_important_sentence.js',
             'dev-js/api_calls.js',
             'dev-js/parser.js',
-            'dev-js/index.js'
+            'dev-js/index.js',
+            'dev-js/livechat.js'
           ]
         }
       }
