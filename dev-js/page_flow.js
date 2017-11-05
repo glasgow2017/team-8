@@ -38,11 +38,16 @@ $('body').ready(function() {
     displayTopBanner();
 
     const strPageText = extractTextFromPage($('body'));
+    const strPageImage = extractImageFromPage($('body'));
 
-    const sentences = getSummary(strPageText, 'Page text', 4); // TMP
-    //const sentences = ["US President Donald Trump has arrived in Japan at …ietnam and the Philippines also on his itinerary.", "President Trump arrived at the Yokota US Air Force base west of Tokyo on Sunday morning.", "Bilateral meetings with Mr Abe↵↵Tuesday, 7 Novembe…South Korea for talks with President Moon Jae-in.", "Mr Trump will also address the National Assembly↵↵… gathering that includes the US, India and Russia"]; // TMP
+    //const sentences = getSummary(strPageText, 'Page text', 4); // TMP
+    const sentences = ["US President Donald Trump has arrived in Japan at …ietnam and the Philippines also on his itinerary.", "President Trump arrived at the Yokota US Air Force base west of Tokyo on Sunday morning.", "Bilateral meetings with Mr Abe↵↵Tuesday, 7 Novembe…South Korea for talks with President Moon Jae-in.", "Mr Trump will also address the National Assembly↵↵… gathering that includes the US, India and Russia"]; // TMP
     console.log(sentences);
 
+    if (strPageImage != undefined || $.isEmptyObject(strPageImage)) {
+        const image_tags = getImageTags(strPageImage);
+
+    }
 
     $(document).ready(function() {
         var html = '<ul>';
@@ -56,8 +61,21 @@ $('body').ready(function() {
         }
         html += '</ul>';
         $('#t8-cfg_header').prepend(html);
+
+        if (image_tags != undefined) {
+
+            var image_desc = "This image may contain : "
+
+            for (var k = 0; k < image_tags.length; k++) {
+
+                if (image_tags[i].confidence > 0.35) {
+
+                    image_desc += image_tags[i] + " ";
+
+                }
+            }
+
+        }
+
     });
-
-
-
 });
