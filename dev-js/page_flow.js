@@ -47,17 +47,15 @@ $('body').ready(function() {
     $(document).ready(function() {
         var html = '<ul>';
         const $body = $('body');
-        for (var i = 0; i < sentences.length; i++) {
-
-            findAndReplace(sentences[i], '<a name="Sentence"' + i + '"/a');
-
-            html += '<li>' + sentences[i] + '</li>';
-
+        var out = '';
+        out += sentences[0];
+        for (var i = 1; i < sentences.length; i++) {
+          out += ' ' + sentences[i];
         }
-        html += '</ul>';
-        $('#t8-cfg_header').prepend(html);
+        console.log(out);
+        setTimeout(function() {
+          $('#t8-cfg_summary').text(out);
+        }.bind(this), 2000);
     });
-
-
 
 });
