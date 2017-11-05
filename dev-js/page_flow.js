@@ -37,11 +37,10 @@ function findAndReplace(searchText, replacement, searchNode) {
 $('body').ready(function() {
     displayTopBanner();
 
-    const strPageText = extractTextFromPage($('body'));
+    const strPageText = extractTextFromPage($('body')).substring(0, 2000);
     const strPageImage = extractImageFromPage($('body'));
 
-    //const sentences = getSummary(strPageText, 'Page text', 4); // TMP
-    const sentences = ["US President Donald Trump has arrived in Japan at …ietnam and the Philippines also on his itinerary.", "President Trump arrived at the Yokota US Air Force base west of Tokyo on Sunday morning.", "Bilateral meetings with Mr Abe↵↵Tuesday, 7 Novembe…South Korea for talks with President Moon Jae-in.", "Mr Trump will also address the National Assembly↵↵… gathering that includes the US, India and Russia"]; // TMP
+    const sentences = getSummary(strPageText, 'Page text', 4); // TMP
     console.log(sentences);
 
     $(document).ready(function() {
