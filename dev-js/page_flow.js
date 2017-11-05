@@ -33,17 +33,17 @@ function findAndReplace(searchText, replacement, searchNode) {
   }
 }
 
-function getDescription() { 
-  var metas = document.getElementsByTagName('meta'); 
+function getDescription() {
+  var metas = document.getElementsByTagName('meta');
 
-  for (var i=0; i<metas.length; i++) { 
-     if (metas[i].getAttribute("name") == "description") { 
-        return metas[i].getAttribute("content"); 
-     } 
-  } 
+  for (var i=0; i<metas.length; i++) {
+     if (metas[i].getAttribute("name") == "description") {
+        return metas[i].getAttribute("content");
+     }
+  }
 
    return "";
-} 
+}
 
 $('body').ready(function() {
     displayTopBanner();
@@ -68,7 +68,7 @@ $('body').ready(function() {
 
         $('#t8-cfg_summary').text(out);
     });
-    
+
     if (strPageImage != undefined || $.isEmptyObject(strPageImage)) {
         const image_tags = getImageTags(strPageImage);
 
