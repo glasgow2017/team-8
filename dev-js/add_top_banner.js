@@ -25,8 +25,9 @@ const displayTopBanner = function fDisplayTopBanner() {
 
   const styles = `<style>
     #t8-cfg_header {
+      all:unset;
       width: 300px;
-      padding: 20px;
+      padding: 0;
       text-align: center;
       background-color: #3949ab;
       color: #fff;
@@ -36,20 +37,34 @@ const displayTopBanner = function fDisplayTopBanner() {
       top: 70px;
       border-radius: 5px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      padding: 20px;
     }
-  
+
+    .t8-cfg_padding-nobot {
+      padding: 20px 20px 0px 20px;
+    }
+
     #t8-cfg_header h3 {
-      font-size: 20px;
+      font-size: 33px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
       color=#fff;
       font-weight: 100;
     }
-  
+
     #t8-cfg_header h4 {
       font-size: 20px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
       color=#fff;
       font-weight: 100;
+      padding: 10px;
+    }
+
+    #t8-cfg_header p {
+      text-align: left;
+    }
+
+    #t8-cfg_summary {
+      text-align: center;
     }
 
     .geniessen-anchor {
@@ -60,6 +75,14 @@ const displayTopBanner = function fDisplayTopBanner() {
       position: relative;
     }
   </style>`;
+
+  // Get the config
+  function getConfig(callback) {
+    chrome.storage.sync.get('t8-config', function(obj) {
+      config = obj['t8-config'];
+      callback(config);
+    }.bind(this));
+  }
 
   function getPluginEl(name) {
     return $(`#${elPrefix}${name}`);

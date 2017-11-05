@@ -16,7 +16,7 @@ After every pull or clone, run:
  - build.bat
 
 # TODO
- - think of a better extension name for index.raw.js
- - replace global.extractTextFromPage… by something a bit less "bad-practice"
+ - Improve navigation using anchors
+ - Extend the soluctions to work with Safari and Firefox
  - apply AirBnb's JavaScript coding style
  - if API doesn't return anything, revert back to extract_important_sentence.js

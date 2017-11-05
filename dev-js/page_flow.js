@@ -34,25 +34,34 @@ function findAndReplace(searchText, replacement, searchNode) {
 }
 
 
-$('body').ready(() => {
-  displayTopBanner();
+$('body').ready(function() {
+    displayTopBanner();
 
-  const strPageText = extractTextFromPage($('body'));
+    const strPageText = extractTextFromPage($('body'));
+    const strPageImage = extractImageFromPage($('body'));
 
-  // const sentences = getSummary(strPageText, 'Page text', 4); // TMP
-  const sentences = ["US President Donald Trump has arrived in Japan at …ietnam and the Philippines also on his itinerary.", "President Trump arrived at the Yokota US Air Force base west of Tokyo on Sunday morning.", "Bilateral meetings with Mr Abe↵↵Tuesday, 7 Novembe…South Korea for talks with President Moon Jae-in.", "Mr Trump will also address the National Assembly↵↵… gathering that includes the US, India and Russia"]; // TMP
-  // console.log(sentences);
+    //const sentences = getSummary(strPageText, 'Page text', 4); // TMP
+    const sentences = ["US President Donald Trump has arrived in Japan at …ietnam and the Philippines also on his itinerary.", "President Trump arrived at the Yokota US Air Force base west of Tokyo on Sunday morning.", "Bilateral meetings with Mr Abe↵↵Tuesday, 7 Novembe…South Korea for talks with President Moon Jae-in.", "Mr Trump will also address the National Assembly↵↵… gathering that includes the US, India and Russia"]; // TMP
+    console.log(sentences);
 
+    if (strPageImage != undefined || $.isEmptyObject(strPageImage)) {
+        const image_tags = getImageTags(strPageImage);
 
-  $(document).ready(() => {
-    let html = '<ul>';
-    const $body = $('body');
-    for (let i = 0; i < sentences.length; i++) {
-      findAndReplace(sentences[i], `<a name="Sentence"${i}"/a`);
-
-      html += `<li>${sentences[i]}</li>`;
     }
-    html += '</ul>';
-    $('#t8-cfg_header').prepend(html);
-  });
+
+    $(document).ready(function() {
+        var html = '<ul>';
+        const $body = $('body');
+        var out = '';
+        out += sentences[0];
+        for (var i = 1; i < sentences.length; i++) {
+            out += ' ' + sentences[i];
+        }
+
+        console.log(out);
+        setTimeout(function() {
+            $('#t8-cfg_summary').text(out);
+        }.bind(this), 2000);
+    });
+
 });
