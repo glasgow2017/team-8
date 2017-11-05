@@ -1,1 +1,1 @@
-browserify dev-node/extract_important_sentence.node.js -o dev-js/extract_important_sentence.js && browserify dev-node/parser.node.js -o dev-js/parser.js && grunt
+browserify dev-node/parser.node.js -o dev-js/parser.js && grunt

@@ -10,3 +10,5 @@ After every pull or clone, run:
  - browserify content/extract_important_sentence.raw.js -o content/extract_important_sentence.js
 # TODO
  - think of a better extension name for index.raw.js
+ - replace global.extractTextFromPage… by something a bit less "bad-practice"
+ - apply AirBnb's JavaScript coding style

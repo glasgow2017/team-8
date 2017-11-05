@@ -6223,17 +6223,16 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./support/isBuffer":31,"_process":12,"inherits":30}],33:[function(require,module,exports){
+(function (global){
 extractor = require('unfluff-without-node');
 
-const extractReadableTextFromPage = function extractTextFromPage() {
-    $('body').ready(function() {
-        data = extractor.lazy($("body").html());
-        plane = data.text();
-        plane.replace('.','. ');
-        plane.replace('\n',' ');
-        return(plane);
-    });
+global.extractTextFromPage = function fExtractTextFromPage() {
+  text = extractor.lazy($("body").text());
+  text.replace('.','. ');
+  text.replace('\n',' ');
+  return text;
 }
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"unfluff-without-node":110}],34:[function(require,module,exports){
 "use strict";
 
