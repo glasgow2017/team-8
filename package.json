@@ -1,5 +1,5 @@
 {
-    "name": "cdg-glasgow-2017-team-8",
+    "name": "cyclops",
     "version": "1.0.0",
     "dependencies": {
         "aylien_textapi": "^0.6.0",
