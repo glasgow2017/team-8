@@ -74,6 +74,24 @@ const displayTopBanner = function fDisplayTopBanner() {
       display: inline-block;
       position: relative;
     }
+
+    ul.gsw2017-8-top-banner-ul {
+      list-style-type: none !important;
+      text-align: left !important;
+      color: #fffff !important;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+    }
+    
+    a.gsw2017-8-top-banner-a {
+      text-decoration: none !important;
+      color: #ffffff !important;
+      font-size: 1.6rem !important;
+    }
+    
+    a.gsw2017-8-top-banner-a:hover {
+      text-decoration: underline !important;
+    }
   </style>`;
 
   // Get the config
@@ -133,30 +151,30 @@ const displayTopBanner = function fDisplayTopBanner() {
       $('#' + elPrefix + 'header').prepend('<div id="t8-cfg_summary"></div>');
       
       $sections = getPageSections();
-      $('#' + elPrefix + 'header').prepend('<ul id="geniessen-quick-access"></ul>');
+      $('#' + elPrefix + 'header').prepend('<ul class="gsw2017-8-top-banner-ul" id="geniessen-quick-access"></ul>');
       if (null !== $sections[0]) {
         if (undefined === $sections[0].attr('id')) {
           $sections[0].attr('id', 'geniessen-header');          
         }     
-        $('#geniessen-quick-access').append('<li><a href="#' + $sections[0].attr('id') + '">Header</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[0].attr('id') + '">Header</a></li>');
       }
       if (null !== $sections[1]) {
         if (undefined === $sections[1].attr('id')) {
           $sections[1].attr('id', 'geniessen-navbar');          
         }        
-        $('#geniessen-quick-access').append('<li><a href="#' + $sections[1].attr('id') + '">Navigation Bar</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[1].attr('id') + '">Navigation Bar</a></li>');
       }
       if (null !== $sections[2]) {
         if (undefined === $sections[2].attr('id')) {
           $sections[2].attr('id', 'geniessen-main-content');          
         }         
-        $('#geniessen-quick-access').append('<li><a href="#' + $sections[2].attr('id') + '">Main Content</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[2].attr('id') + '">Main Content</a></li>');
       }
       if (null !== $sections[3]) {
         if (undefined === $sections[3].attr('id')) {
           $sections[3].attr('id', 'geniessen-footer');          
         }
-        $('#geniessen-quick-access').append('<li><a href="#' + $sections[3].attr('id') + '">Footer</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[3].attr('id') + '">Footer</a></li>');
       }
     }
   });
