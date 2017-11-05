@@ -1,5 +1,4 @@
-function call(textargs, sentence_amount) {
-
+function getSummary(text_body, text_title, sentence_amount) {
 
     $.ajax({
         url: "https://api.aylien.com/api/v1/summarize",
@@ -9,7 +8,8 @@ function call(textargs, sentence_amount) {
             "X-AYLIEN-TextAPI-Application-ID": "b7ff715b"
         },
         data: {
-            "text": textargs,
+            "text": text_body,
+            "title": text_title,
             "sentences_number": sentence_amount,
         },
         success: function(response) {
