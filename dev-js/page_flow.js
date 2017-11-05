@@ -51,8 +51,8 @@ $('body').ready(function() {
     const strPageText = extractTextFromPage($('body')).substring(0, 2000);
     const strPageImage = extractImageFromPage($('body'));
 
-    console.assert(strPageText != null, "Page extraction returned NULL");
-    console.assert(strPageImage != null, "Image extraction returned NULL");
+    Console.assert(strPageText != null, "Page extraction returned NULL");
+    Console.assert(strPageImage != null, "Image extraction returned NULL");
 
     
 
