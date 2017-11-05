@@ -1,6 +1,6 @@
 Code for Good hackaton by 
 
-Solution to make web pages more accessible for people with visual disablities. 
+Solution to make web pages more accessible for people with visual disablities. This currently only works with chrome. 
 
 Key aspects:
 
