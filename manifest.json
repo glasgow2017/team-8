@@ -8,10 +8,8 @@
       "matches": ["<all_urls>"],
       "js": [
         "node_modules/jquery/dist/jquery.min.js",
-        "content/add_top_banner.js",
-        "content/extract_important_sentence.js",
-        "content/index.js",
-        "content/parser.js"
+        "node_modules/jquery.hotkeys/jquery.hotkeys.js",
+        "content/script.min.js"
       ],
       "run_at": "document_start"
     }
