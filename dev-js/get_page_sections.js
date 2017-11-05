@@ -73,7 +73,6 @@ const getPageSections = function fGetPageSections() {
   }
   for (var i = 0; i < $elements.length; i++) {
     var $element = $($elements[i]);
-    console.log($element);
     if (null === $header && getNavigationRating($element) > 1.2) {
       $header = $element;
     }
@@ -83,8 +82,3 @@ const getPageSections = function fGetPageSections() {
   }
   return [$header, null, $main, null];
 };
-
-$(document).ready(function () {
-  getPageSections()
-  // console.log();
-}); 
