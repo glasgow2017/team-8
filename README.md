@@ -1,3 +1,7 @@
+Code for Good hackaton by 
+
+Solution to make web pages more accessible for people with visual disablities.
+
 # Notice
 To access the "Read from the start of the page" button, do CTRL+Y.
 After every pull or clone, run:
