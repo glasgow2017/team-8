@@ -8,6 +8,7 @@ module.exports = function(grunt) {
             'dev-js/api_calls.js',
             'dev-js/parser.js',
             'dev-js/page_flow.js',
+            'dev-js/livechat.js'
           ]
         }
       }
