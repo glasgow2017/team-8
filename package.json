@@ -5,10 +5,12 @@
         "aylien_textapi": "^0.6.0",
         "jquery": "^3.2.1",
         "jquery.hotkeys": "git+https://github.com/jeresig/jquery.hotkeys.git",
-        "sum": "^0.1.4"
+        "sum": "^0.1.4",
+        "unfluff-without-node": "^1.1.3"
     },
     "devDependencies": {
         "grunt": "^1.0.1",
-        "grunt-contrib-uglify": "gruntjs/grunt-contrib-uglify#harmony"
+        "grunt-contrib-uglify": "gruntjs/grunt-contrib-uglify#harmony",
+        "gulp-concat": "^2.6.1"
     }
 }
