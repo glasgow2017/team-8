@@ -9,4 +9,10 @@ After every pull or clone, run:
  - browserify content/add_top_banner.raw.js -o content/index.js
  - browserify content/extract_important_sentence.raw.js -o content/extract_important_sentence.js
 # TODO
- - think of a better extension name for index.raw.js
+ - Injecting anchors
+ -Implementing everything together
+ -compact finles into one with GRUNT
+ -make sure the top banner in generated
+ -consistent coding style
+ -fix bad request
+ -fix top banner
