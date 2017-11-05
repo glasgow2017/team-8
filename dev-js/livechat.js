@@ -4,12 +4,6 @@ var baseTabIndex = 9001; // ITS OVER 9000!
 var conversation; // active conversation
 var nMessageIndex = 0;
 
-function addMessage(message) {
-  message = $(message)
-  message.before( '<input type="text" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + nMessageIndex + '" aria-label="' + message.text() + '" />' );
-  nMessageIndex++;
-}
-
 $('body').ready( function() {
   // www.intercom.com
   setTimeout(function() {
@@ -39,13 +33,18 @@ $('body').ready( function() {
                 } else {
                   aria = 'Live chat response: ' + itm.text() + '.';
                 }
-                itm.before( '<input type="text" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + i + '" aria-label="' + aria + '" />' );
+                itm.before( '<input type="text" id="cfg-t8_' + i + '" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + i + '" aria-label="' + aria + '" />' );
               }
+              setInterval(function() { checkForUpdates(msg); }.bind(this), 3000);
               return;
             }
             if (nMessageIndex <= msgs.length) return;
             while (nMessageIndex < msgs.length) {
-              addMessage(msgs[nMessageIndex + 1]).bind(this);
+              var message = $(msgs[nMessageIndex + 1])
+              message.before( '<input type="text" id="cfg-t8_' + nMessageIndex + '" readonly style="height: 0; width: 0;" tabindex="' + baseTabIndex + nMessageIndex + '" aria-label="' + message.text() + '" />' );
+              nMessageIndex++;
+              addMessage().bind(this);
+              $('cfg-t8_' + (nMessageIndex-1), content).focus();
             }
           }.bind(this), 1000);
         }.bind(this), 2000);
