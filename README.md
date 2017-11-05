@@ -10,6 +10,8 @@ Key aspects:
 
 3. A small section will appear in the top right hand side of the screen containing links to the most important sections within the web page, this again removes the need for additional tabs through the page.
 
+4. Makes live chat accessible to the user. Currently messages recieveed by the user cannot be read out by the screen readers. We have added this functionality by taking the message that is received and turning it into something which the screen reader has access to.
+
 # Don't forget to do that once
  - npm install -g eslint-cli
  - npm install -g grunt-cli
