@@ -33,6 +33,17 @@ function findAndReplace(searchText, replacement, searchNode) {
   }
 }
 
+function getDescription() { 
+  var metas = document.getElementsByTagName('meta'); 
+
+  for (var i=0; i<metas.length; i++) { 
+     if (metas[i].getAttribute("name") == "description") { 
+        return metas[i].getAttribute("content"); 
+     } 
+  } 
+
+   return "";
+} 
 
 $('body').ready(function() {
     displayTopBanner();
@@ -40,8 +51,11 @@ $('body').ready(function() {
     const strPageText = extractTextFromPage($('body')).substring(0, 2000);
     const strPageImage = extractImageFromPage($('body'));
 
-    const sentences = getSummary(strPageText, 'Page text', 4);
+    var sentences = getSummary(strPageText, 'Page text', 4);
     console.log(sentences);
+    if (0 === sentences.length) {
+      sentences.push(getDescription());
+    }
 
     $(document).ready(function() {
       console.log(sentences);
