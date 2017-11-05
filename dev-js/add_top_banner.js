@@ -149,33 +149,43 @@ const displayTopBanner = function fDisplayTopBanner() {
       // Add header section
       $('body').prepend(`${styles}<div id="${elPrefix}header" tabindex="1"></div>`);
       $('#' + elPrefix + 'header').prepend('<div id="t8-cfg_summary"></div>');
+      $('#' + elPrefix + 'header').after('<div id="cyclops-top-banner-end" href="#scb-end" id="gsw17-8-sr-read"></div>');
       
       $sections = getPageSections();
       $('#' + elPrefix + 'header').prepend('<ul class="gsw2017-8-top-banner-ul" id="geniessen-quick-access"></ul>');
+
+      $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#cyclops-top-banner-end" autofocus id="cyclops-top-banner-link" tabindex="1">Read page from the start</a></li>');
+
       if (null !== $sections[0]) {
         if (undefined === $sections[0].attr('id')) {
           $sections[0].attr('id', 'geniessen-header');          
         }     
-        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[0].attr('id') + '">Header</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[0].attr('id') + '" tabindex="1">Header</a></li>');
       }
       if (null !== $sections[1]) {
         if (undefined === $sections[1].attr('id')) {
           $sections[1].attr('id', 'geniessen-navbar');          
         }        
-        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[1].attr('id') + '">Navigation Bar</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[1].attr('id') + '" tabindex="1">Navigation Bar</a></li>');
       }
       if (null !== $sections[2]) {
         if (undefined === $sections[2].attr('id')) {
           $sections[2].attr('id', 'geniessen-main-content');          
         }         
-        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[2].attr('id') + '">Main Content</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[2].attr('id') + '" tabindex="1">Main Content</a></li>');
       }
       if (null !== $sections[3]) {
         if (undefined === $sections[3].attr('id')) {
           $sections[3].attr('id', 'geniessen-footer');          
         }
-        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[3].attr('id') + '">Footer</a></li>');
+        $('#geniessen-quick-access').append('<li class="gsw2017-8-top-banner-li"><a class="gsw2017-8-top-banner-a" href="#' + $sections[3].attr('id') + '" tabindex="1">Footer</a></li>');
       }
+      $('#' + elPrefix + 'header').prepend();
+      $('#cyclops-top-banner-link').focus();
     }
   });
 };
+
+$(document).bind('keyup', 'ctrl+y', function () {
+  $('#cyclops-top-banner-link').focus();
+});
