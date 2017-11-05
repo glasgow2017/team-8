@@ -1,20 +1,21 @@
-function call(textargs, sentence_amount) {
-    
-    const response = $.ajax({
-            async: false,
-            url: "https://api.aylien.com/api/v1/summarize",
-            headers: {
-                "X-AYLIEN-TextAPI-Application-Key": "21414e5ff02cdcda8b8b97005b79027f",
-                "X-AYLIEN-TextAPI-Application-ID": "b7ff715b"
-            },
-            data: {
-                "text": textargs,
-                "sentences_number": sentence_amount,
-            }
-    });
+function getSummary(text_body, text_title, sentence_amount) {
 
-    const json = JSON.parse(response);
-    return json.sentences;
+    return $.ajax({
+        async: false,
+        url: "https://api.aylien.com/api/v1/summarize",
+        type: "get",
+        headers: {
+            "X-AYLIEN-TextAPI-Application-Key": "21414e5ff02cdcda8b8b97005b79027f",
+            "X-AYLIEN-TextAPI-Application-ID": "b7ff715b"
+        },
+        data: {
+            "text": text_body,
+            "title": text_title,
+            "sentences_number": sentence_amount,
+        }
+    }).responseJSON.sentences;
+
+
 }
 
-console.log(call('YO' + 'By default, all requests are sent asynchronously (i.e. this is set to true by default). If you need synchronous requests, set this option to false. Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation. Note that synchronous requests may temporarily lock the browser, disabling any actions while the request is active.', 5));
+console.log(getSummary('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'IETUI', 1));
