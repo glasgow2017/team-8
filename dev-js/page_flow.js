@@ -52,30 +52,16 @@ $('body').ready(function() {
     $(document).ready(function() {
         var html = '<ul>';
         const $body = $('body');
-        for (var i = 0; i < sentences.length; i++) {
-
-            findAndReplace(sentences[i], '<a name="Sentence"' + i + '"/a');
-
-            html += '<li>' + sentences[i] + '</li>';
-
-        }
-        html += '</ul>';
-        $('#t8-cfg_header').prepend(html);
-
-        if (image_tags != undefined) {
-
-            var image_desc = "This image may contain : "
-
-            for (var k = 0; k < image_tags.length; k++) {
-
-                if (image_tags[i].confidence > 0.35) {
-
-                    image_desc += image_tags[i] + " ";
-
-                }
-            }
-
+        var out = '';
+        out += sentences[0];
+        for (var i = 1; i < sentences.length; i++) {
+            out += ' ' + sentences[i];
         }
 
+        console.log(out);
+        setTimeout(function() {
+            $('#t8-cfg_summary').text(out);
+        }.bind(this), 2000);
     });
+
 });
