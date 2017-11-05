@@ -3,6 +3,7 @@ function call(textargs, sentence_amount) {
 
     $.ajax({
         url: "https://api.aylien.com/api/v1/summarize",
+        type: "get",
         headers: {
             "X-AYLIEN-TextAPI-Application-Key": "21414e5ff02cdcda8b8b97005b79027f",
             "X-AYLIEN-TextAPI-Application-ID": "b7ff715b"
