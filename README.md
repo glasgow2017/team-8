@@ -1,4 +1,4 @@
-Code for Good hackaton by 
+Code for Good hackaton
 
 Solution to make web pages more accessible for people with visual disablities. This currently only works with chrome. 
 
